@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const App = () => {
   return (
     <Router>
@@ -34,7 +36,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/intern/1');
+        const response = await fetch(`${API_BASE_URL}/api/intern/1`);
         const data = await response.json();
         setInternData(data);
       } catch (error) {
@@ -92,7 +94,7 @@ const Leaderboard = () => {
   useEffect(() => {
     const fetchLeaderboard = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/leaderboard');
+        const response = await fetch(`${API_BASE_URL}/api/leaderboard`);
         const data = await response.json();
         setLeaderboard(data);
       } catch (error) {
